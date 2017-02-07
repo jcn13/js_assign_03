@@ -1,0 +1,30 @@
+Closure Tutorial
+
+Closure Definition
+
+It is a inner function from another function, that can access variables outside it's scope. The local variables are re-created every time the program calls the function. The following example will help you to understand 
+
+let dayTime = 'Morning'
+function greetings(name){
+	return function(timeSets){
+		let phrase = (`Good ${timeSets} ${name}!`)
+		return phrase
+	}
+}
+let morning = greetings('Joao')
+console.log(morning(dayTime))
+// Good Morning Joao!
+
+let evening = greetings('Thalita')
+console.log(evening(dayTime = 'Evening'))
+// Good Evening Thalita!
+
+In the program above, you can see that The inner function has access to the values(as name and timeSets passed by parameter) from outer function’s variables and also the parameters. So morning and evening are closures, they have the same function definition, but they have not equals environments. In morning, timeSets is dayTime's value declared in the beginning from the code, and evening is the same dayTime but passed as parameters with a different value.
+
+Closure are widespread in Node.js, helping to solve issues created by the asynchronous of Javascript.
+
+References
+
+1-Javascript.isSexy, Understand JavaScript Closures With Ease - http://javascriptissexy.com/understand-javascript-closures-with-ease/
+2-Mozilla Developer Network, Closures - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+3-Channel FunFunFunction, Closures - Part 5 of Functional Programming in JavaScript - https://www.youtube.com/watch?v=CQqwU2Ixu-U 
